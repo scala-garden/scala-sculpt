@@ -8,11 +8,10 @@ homepage := Some(url("http://github.com/lightbend/scala-sculpt"))
 scalaVersion := "2.13.18"
 
 libraryDependencies ++= Seq(
-  "org.scala-lang" % "scala-compiler" % scalaVersion.value % "provided",
+  "org.scala-lang" % "scala-compiler" % scalaVersion.value % Provided,
   "io.spray" %% "spray-json" % "1.3.6",
   "org.scalameta" %% "munit" % "1.3.4" % Test,
 )
-testFrameworks += new TestFramework("munit.Framework")
 
 // so we can run the Scala compiler during integration testing without
 // weird problems
@@ -26,7 +25,7 @@ scalacOptions ++= Seq(
   "-unchecked",
   "-feature",
   "-Xlint",
-  "-Xfatal-warnings",
+  "-Werror",
 )
 
 // generate same JAR name as `package` would:
@@ -54,4 +53,4 @@ headerLicense := Some(HeaderLicense.Custom(
   "Copyright (C) Lightbend Inc. <http://lightbend.com>"))
 
 // scalafix; run with `scalafixEnable` followed by `scalafixAll`
-ThisBuild / scalafixDependencies += "com.github.liancheng" %% "organize-imports" % "0.6.0"
+scalafixDependencies += "com.github.liancheng" %% "organize-imports" % "0.6.0"
