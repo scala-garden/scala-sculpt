@@ -9,7 +9,7 @@ import scala.tools.nsc.{Global, Settings}
 object Scaffold {
 
   val classes: String =
-    new java.io.File("./target/scala-2.13/classes")
+    new java.io.File("./target/out/jvm/scala-2.13.18/scala-sculpt/classes")
       .ensuring(_.exists)
       .getAbsolutePath
 
